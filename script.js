@@ -115,6 +115,7 @@ function playerPick(playerPick) {
     playerPickElem.innerHTML = playerPick;
     computerPickElem.innerHTML = computerPick;
     checkRoundWinner(playerPick, computerPick);
+    endGame();
 }
 
  function setGamePoints() {
@@ -125,10 +126,13 @@ function endGame() {
     if (player.score == 10) {
         playerResultElem.innerHTML = "Gracz wygrywa!";
         alert('Gratulacje! Wygrałeś!');
+        gameState = 'ended';
+        setGameElements();
+
     } else if (computer.score == 10) {
         computerResultElem.innerHTML = "Komputer wygrywa!";
-        alert('Przegrałeś Ty jebany luzerze');
+        alert('Przegrałeś :(');
+        gameState = 'ended';
+        setGameElements();
     }
 }
-
-endGame();
