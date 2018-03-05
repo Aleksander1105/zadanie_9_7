@@ -10,7 +10,7 @@ pickRock.addEventListener('click', function() { playerPick('Rock') });
 pickPaper.addEventListener('click', function() { playerPick('Paper') });
 pickScissors.addEventListener('click', function() { playerPick('Scissors') });
 
-var gameState = 'Notstarted',  //started // ended
+var gameState = 'notstarted',  //started // ended
     player = {
         name: '',
         score: 0
@@ -48,12 +48,11 @@ var playerPointsElem = document.getElementById('js-playerPoints'),
     computerPointsElem = document.getElementById('js-computerPoints');
 
 function newGame() {
-  player.name = prompt('Please enter your name', 'imię gracza');
+  player.name = prompt('Please enter your name');
   if (player.name) {
     player.score = computer.score = 0;
     gameState = 'started';
     setGameElements();
-
     playerNameElem.innerHTML = player.name;
     setGamePoints(); // This function has not been created yet
   }
