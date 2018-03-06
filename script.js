@@ -59,10 +59,6 @@ function newGame() {
 
 }
 
-function playerPick(playerPick) {
-    console.log(playerPick);
-}
-
 function getComputerPick() {
     var possiblePicks = ['Rock', 'Paper', 'Scissors'];
     return possiblePicks[Math.floor(Math.random()*3)];
@@ -77,7 +73,6 @@ function playerPick(playerPick) {
     var computerPick = getComputerPick();
 
     playerPickElem.innerHTML = playerPick;
-    computerPickElem.innerHTML = computerPick;
 }
 
 function checkRoundWinner(playerPick, computerPick) {
@@ -111,8 +106,6 @@ function checkRoundWinner(playerPick, computerPick) {
 function playerPick(playerPick) {
     var computerPick = getComputerPick();
 
-    playerPickElem.innerHTML = playerPick;
-    computerPickElem.innerHTML = computerPick;
     checkRoundWinner(playerPick, computerPick);
     endGame();
 }
@@ -122,13 +115,13 @@ function playerPick(playerPick) {
  }
 
 function endGame() {
-    if (player.score == 10) {
+    if (player.score === 10) {
         playerResultElem.innerHTML = "Gracz wygrywa!";
         alert('Gratulacje! Wygrałeś!');
         gameState = 'ended';
         setGameElements();
 
-    } else if (computer.score == 10) {
+    } else if (computer.score === 10) {
         computerResultElem.innerHTML = "Komputer wygrywa!";
         alert('Przegrałeś :(');
         gameState = 'ended';
