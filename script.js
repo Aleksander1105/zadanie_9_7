@@ -55,6 +55,10 @@ function newGame() {
     setGameElements();
     playerNameElem.innerHTML = player.name;
     setGamePoints(); // This function has not been created yet
+  } 
+  if (!player.name) {
+  	alert('Wrong data');
+  	newGame();
   }
 
 }
@@ -95,36 +99,40 @@ function checkRoundWinner(playerPick, computerPick) {
     if (winnerIs == 'Player') {
         playerResultElem.innerHTML = "WIN!";
         player.score++;
-        playerPointsElem.innerHTML = player.score;
+        setGamePoints();
     } else if (winnerIs == 'Computer') {
         computerResultElem.innerHTML = "WIN!";
         computer.score++;
-        computerPointsElem.innerHTML = computer.score;
+        setGamePoints();
     }
 }
 
 function playerPick(playerPick) {
     var computerPick = getComputerPick();
-
     checkRoundWinner(playerPick, computerPick);
     endGame();
 }
 
  function setGamePoints() {
      playerPointsElem.innerHTML = player.score;
+     computerPointsElem.innerHTML = computer.score;
  }
 
 function endGame() {
     if (player.score === 10) {
         playerResultElem.innerHTML = "Gracz wygrywa!";
         alert('Gratulacje! Wygrałeś!');
-        gameState = 'ended';
-        setGameElements();
+        setTimeout(function(){
+        	gameState = 'ended';
+        	setGameElements();
+        }, 0);
 
     } else if (computer.score === 10) {
         computerResultElem.innerHTML = "Komputer wygrywa!";
         alert('Przegrałeś :(');
-        gameState = 'ended';
-        setGameElements();
+        setTimeout(function(){
+        	gameState = 'ended';
+        	setGameElements();
+        }, 0);
     }
 }
